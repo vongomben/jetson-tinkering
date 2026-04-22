@@ -5,6 +5,8 @@ This repository contains Python scripts to:
 - run YOLO live detection on webcam frames,
 - expose video streams and detection/tracking data through Flask HTTP endpoints.
 
+
+
 ## Requirements
 
 - Python 3.8+
@@ -30,6 +32,45 @@ Each script has inline config variables near the top, including:
 Update `MODEL_PATH` in each script before running.
 
 ---
+
+## Roboflow and Labelling
+
+### Creta a "Object Detection" Project in Roboflow
+
+![Detection](img/roboflow-01.gif)
+
+
+### Upload all the pictures you have from the objects you want to detect
+
+![Upload](img/roboflow-02.gif)
+
+### Label the objets (long job!)
+
+![label](img/roboflow-03-labelling.gif)
+
+### Create a good version (follow the 80-10-10 rule)
+
+![Versions](img/roboflow-04-versions.gif)
+
+### Train on the Jetson
+
+Once you donwloaded the latest `Yolo11n` from [ultralytics](https://github.com/ultralytics/ultralytics/tree/v8.3.252) github (`n` stands for light, possibly nano) you can launch the follwoing command in order to have the Jetson.
+
+```bash
+yolo train model=yolo11n.pt data=./data.yaml epochs=100 imgsz=320 batch=2 workers=0 device=0
+```
+
+#### The command: 
+* `yolo11` `n` → nano, light `.pt` pre-trained 
+* `model=yolo11n.pt` →  Where are the images? / Where are the labels? / How many classes are there? / What are they called?
+* `epochs=100` →  How many times does the model process the entire dataset? 1 epoch means all images have been seen once. 100 epochs = 100 times
+* `imgsz=320`  →  320 × 320  
+* `batch=2`  →  2 images at a time
+* `workers=0`  →  0 all in one thread (slower but more stable) 
+* `device=0` →  using `CUDA` vs `CPU` that would use `GPU` with far more time
+
+![Training](img/training.gif)
+
 
 ## Scripts
 
@@ -70,6 +111,8 @@ HTTP endpoints: none
 JSON output: none (local window stream only)
 
 ---
+
+
 
 ### `live_detect_web.py`
 
