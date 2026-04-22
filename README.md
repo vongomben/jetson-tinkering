@@ -5,8 +5,6 @@ This repository contains Python scripts to:
 - run YOLO live detection on webcam frames,
 - expose video streams and detection/tracking data through Flask HTTP endpoints.
 
-
-
 ## Requirements
 
 - Python 3.8+
@@ -35,7 +33,7 @@ Update `MODEL_PATH` in each script before running.
 
 ## Roboflow and Labelling
 
-### Creta a "Object Detection" Project in Roboflow
+### Create an "Object Detection" Project in [Roboflow](http://roboflow.com/)
 
 ![Detection](img/roboflow-01.gif)
 
