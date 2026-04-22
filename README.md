@@ -143,6 +143,8 @@ Example `/counts` response:
 Runs YOLO tracking (`model.track`) to avoid double counting by using persistent object IDs.  
 Exposes both aggregate counters and per-object tracking data.
 
+![live_track_count_web demo](img/live_track_count_web.gif)
+
 Run:
 
 ```bash
